@@ -1,12 +1,12 @@
 {
     "manifest_version": 2,
-    "name": "PrintingTools NG",
-    "version": "2.0.4",
+    "name": "PrintingTools NG_mod_by_aterrion",
+    "version": "2.0.4mod",
     "description": "__MSG_extensionDescription__",
     "author": "Christopher Leidigh",
     "applications": {
         "gecko": {
-            "id": "PrintingToolsNG@cleidigh.kokkini.net",
+            "id": "PrintingToolsNG_mod_by_aterrion@cleidigh.kokkini.net",
             "strict_min_version": "68.0",
             "strict_max_version": "78.*"
         }
