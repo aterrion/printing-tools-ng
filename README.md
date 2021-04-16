@@ -1,4 +1,4 @@
-# ![PTng icon] PrintingTools NG
+# ![PTng icon] PrintingTools NG mod by aterrion
 
 
 [PrintingTools NG](https://addons.thunderbird.net/addon/printingtools-ng) adds many printing functions for messages and address books.
@@ -20,7 +20,7 @@ https://addons.thunderbird.net/addon/printingtools/
 ![Release Status](https://img.shields.io/badge/Release%20Status-v2.0.4%20Released-brightgreen.png)
 
 #
-
+## Модификация оригинального плагина для поддержки отображения вложений формата .p7s при печати писем. Внесены изменения: принудительно включена поддержка .p7s файлов вместо .p7m и vcf, соответствующая опция в настройках игнорируется. Добавлена иконка для .p7s. Переопределен параметр – Кол-во вложений в одной строке, так как иногда обрезало имя файла и не переносило на следующую строку.
 ## PrintingTools NG Add-On Features
 
 PrintingTools NG provides numerous layout and formatting options for
