@@ -962,18 +962,20 @@ var printingtools = {
 			var attTable = printingtools.doc.getElementsByTagName("TABLE");
 
 			if (Array.isArray) {  // Thunderbird 5 or higher (different layout)
+				console.debug("123");
 				var attTab = null;
 				for (var i = 0; i < attTable.length; i++) {
 					var tabclass = attTable[i].getAttribute("class");
 					if (attTable[i].getAttribute("class") == "mimeAttachmentTable") {
 						attTab = attTable[i];
+						console.debug(attTable[i]);
 						break;
 					}
 				}
 				if (attTab) {
 					var tds = attTab.getElementsByTagName("TD");
 					var attDiv = "";
-					var maxAttPerLine = printingtools.prefs.getIntPref("extensions.printingtoolsng.headers.attachments_per_line");
+					var maxAttPerLine = 1;
 					for (var i = 0; i < tds.length; i = i + 2) {
 
 						if (tds.length > 1 && i < tds.length - 2 && maxAttPerLine !== 1) {
@@ -1026,16 +1028,17 @@ var printingtools = {
 			}
 
 			try {
-				if (opener && printingtools.prefs.getBoolPref("extensions.printingtoolsng.process.add_p7m_vcf_attach")) {
+				if (opener) {
 					var attList = opener.document.getElementById("attachmentList");
 					if (attList) {
 						var atts = attList.childNodes;
 						for (var i = 0; i < atts.length; i++) {
+							console.debug(atts[i]);
 							if (Array.isArray)
 								var attDiv = atts[i].getAttribute("tooltiptext");
 							else
 								var attDiv = atts[i].label;
-							if (attDiv.lastIndexOf(".p7m") + 4 != attDiv.length && attDiv.lastIndexOf(".vcf") + 4 != attDiv.length)
+							if (attDiv.lastIndexOf(".p7s") + 4 != attDiv.length && attDiv.lastIndexOf(".vcf") + 4 != attDiv.length)
 								continue;
 							if (!firsttime)
 								comma = ", ";
@@ -1082,11 +1085,18 @@ var printingtools = {
 		},
 
 		findIconSrc: function (filename) {
+			console.debug(filename);
 			var url;
 			var ext = filename.substring(0, filename.lastIndexOf("&")).toLowerCase();
 			ext = ext.substring(ext.lastIndexOf(".") + 1);
-			// console.debug(ext);
-
+			console.debug(ext);
+			
+			var tmp;
+			tmp = filename.toLowerCase();
+			if(tmp.indexOf(".p7s") !==-1){
+				url = "resource://printingtoolsng/icons/key.gif";
+				return url;
+			}
 			switch (ext) {
 				case "doc":
 				case "eml":
@@ -1130,10 +1140,13 @@ var printingtools = {
 				case "pptx":
 					url = "resource://printingtoolsng/icons/pptx.png";
 					break;
+				case "p7s":
+					url = "resource://printingtoolsng/icons/key.gif";
+					break;
 				default:
 					url = "resource://printingtoolsng/icons/file.gif";
 			}
-			// console.debug(url);
+			console.debug(url);
 			return url;
 		},
 	}
